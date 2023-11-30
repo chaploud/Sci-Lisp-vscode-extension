@@ -6,9 +6,6 @@
       "include": "#comment"
     },
     {
-      "include": "#shebang"
-    },
-    {
       "include": "#quoted-sexp"
     },
     {
@@ -68,25 +65,15 @@
         }
       ]
     },
-    "shebang": {
-      "name": "comment.line.shebang.lisp",
-      "begin": "^(#!)",
-      "beginCaptures": {
-        "1": {
-          "name": "punctuation.definition.comment.shebang.lisp"
-        }
-      },
-      "end": "$"
-    },
     "constants": {
       "patterns": [
         {
           "name": "constant.language.null.lisp",
-          "match": "(None)(?=(\\s|\\)|\\]|\\}))"
+          "match": "(nil)(?=(\\s|\\)|\\]|\\}))"
         },
         {
           "name": "constant.language.boolean.lisp",
-          "match": "(True|False)"
+          "match": "(true|false)"
         },
         {
           "name": "constant.numeric.fraction.lisp",
@@ -99,6 +86,10 @@
         {
           "name": "constant.numeric.octal.lisp",
           "match": "(-?0[oO][0-7]+)"
+        },
+        {
+          "name": "constant.numeric.binary.lisp",
+          "match": "(-?0[bB][01]+)"
         },
         {
           "name": "constant.numeric.float.lisp",
