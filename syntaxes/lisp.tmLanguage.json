@@ -92,12 +92,12 @@
           "match": "(-?0[bB][01]+)"
         },
         {
-          "name": "constant.numeric.float.lisp",
-          "match": "(-?\\d+\\.\\d+([eE][+-]?\\d+)?)"
+          "name": "constant.numeric.complex.lisp",
+          "match": "(([-+]?(?:\\d+\\.\\d*|\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?[-+])?(?<![-+])[-+]?(?:\\d+\\.\\d*|(?<!\\d+)\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?[jJ])"
         },
         {
-          "name": "constant.numeric.complex.lisp",
-          "match": "((-?\\d+(\\.(\\d+([eE][+-]?\\d+)?)?)?)[+-](\\d+(\\.(\\d+([eE][+-]?\\d+)?)?)?)?[jJ])"
+          "name": "constant.numeric.float.lisp",
+          "match": "([-+]?(?<!\\d)(?:\\d+\\.\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?)"
         },
         {
           "name": "constant.numeric.int.lisp",
