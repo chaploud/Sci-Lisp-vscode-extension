@@ -73,7 +73,7 @@
         },
         {
           "name": "constant.language.boolean.lisp",
-          "match": "(true|false)"
+          "match": "(true|false)(?=(,|\\s|\\)|\\]|\\}))"
         },
         {
           "name": "constant.numeric.fraction.lisp",
@@ -104,6 +104,18 @@
           "match": "(-?\\d+)"
         },
         {
+          "name": "constant.numeric.infinite.lisp",
+          "match": "(-?inf)(?=(\\s|\\)|\\]|\\}))"
+        },
+        {
+          "name": "constant.numeric.nan.lisp",
+          "match": "(nan)(?=(\\s|\\)|\\]|\\}))"
+        },
+        {
+          "name": "constant.other.symbol.lisp",
+          "match": "(:[^,\\[\\]\\(\\)\\{\\}\\s\\d-]+)"
+        },
+        {
           "include": "#keyword"
         }
       ]
@@ -116,11 +128,7 @@
       "patterns": [
         {
           "name": "keyword.control.lisp",
-          "match": "(?<=(\\s|\\(|\\[|\\{))(break|continue)|((if|set[vx])(-[-\\p{Ll}\\?]*)?|(unless|when|while|[dgls]?for)(-[-\\p{Ll}]*)?|cond|do|fn(/a)?|raise[\\p{Ll}\\-]*|try|except|finally|return|yield)(?=(\\s|\\)|\\]|\\}))"
-        },
-        {
-          "name": "keyword.operator.lisp",
-          "match": "(?<=(\\s|\\(|\\[|\\{))(and|cmp|not|or|xor)(?=(\\s|\\)|\\]|\\}))"
+          "match": "(?<=(\\s|\\(|\\[|\\{))(let|const|def|defn|fn|if|when|for|while|break|continue|struct|enum|class|macro|throw|try|catch|ns|set!|cond|return|yield|import)(?=(\\s|\\)|\\]|\\}))"
         },
         {
           "name": "keyword.other.lisp",

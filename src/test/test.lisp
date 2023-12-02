@@ -29,7 +29,33 @@ nan              ; Not A Number
 inf              ; positive infinity
 -inf             ; negative infinity
 -0.0             ; negative zero
-:symbol          ; symbol (TODO:)
+:symbol          ; symbol
+
+;; Keywords
+(let)
+(const)
+(def)
+(defn)
+(fn)
+(if)
+(when)
+(for)
+(while)
+(break)
+(continue)
+(struct)
+(enum)
+(class)
+(macro)
+(throw)
+(try)
+(catch)
+(ns)
+(set!)
+(cond)
+(return)
+(yield)
+(import)
 
 ;; Builtin Functions / Special Forms / Macros
 ;; TODO: Need variable hilight => Semantic Analysis
@@ -55,7 +81,7 @@ inf              ; positive infinity
 (abs -2)             ; absolute value
 (abs [-2, 3, 4])     ; absolute value applying to vector
 (and true false)     ; and
-(or ture false)      ; or
+(or true false)      ; or
 (xor true true)      ; xor
 (not false)          ; not
 (cos 2.0)            ; cosine
@@ -70,9 +96,10 @@ inf              ; positive infinity
 (randint)
 
 ;; Definition
-(def a 2)            ; global variable
+(def a 2)            ; variable
+(const C [1, 2, 3])  ; constant value (can't assgin after)
 
-(defn func [a,       ; global function
+(defn func [a,       ; function
             b 32]    ; default argument
   (print a)
   (+ a b))
@@ -150,6 +177,7 @@ inf              ; positive infinity
 (in? "a" "12aabc32")          ; is string in string?
 
 ;; vector
+;; TODO: see lodash.js
 (shape [[1, 2], [3, 4], [5, 6]]) ; shape of vector (=> [3, 2])
 (len [1, 2, 3])                  ; length of vector
 (sum [1, 2, 3])                  ; sum of vector
@@ -187,7 +215,7 @@ inf              ; positive infinity
 ([0:2] [[1, 2], [3, 4], [5, 6]])       ; => [[1, 2], [3, 4]]
 ([0:-1, 1] [[1, 2], [3, 4], [5, 6]])   ; => [2, 4]
 ([1, 1] [[1, 2], [3, 4], [5, 6]])      ; => 4
-({:a} {:a 2, :b 3})                    ; => 2
+([:a] {:a 2, :b 3})                    ; => 2
 
 
 ;; functional programming
