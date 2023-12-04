@@ -56,6 +56,8 @@ inf              ; positive infinity
 (return)
 (yield)
 (import)
+(this)
+
 
 ;; Builtin Functions / Special Forms / Macros
 ;; TODO: Need variable hilight => Semantic Analysis

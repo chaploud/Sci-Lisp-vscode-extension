@@ -113,7 +113,7 @@
         },
         {
           "name": "constant.other.symbol.lisp",
-          "match": "(:[^,\\[\\]\\(\\)\\{\\}\\s\\d-]+)"
+          "match": "(:[^,\\[\\]\\(\\)\\{\\}\\s\\d-]+|this)"
         },
         {
           "include": "#keyword"
