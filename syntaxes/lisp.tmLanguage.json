@@ -128,7 +128,7 @@
       "patterns": [
         {
           "name": "keyword.control.lisp",
-          "match": "(?<=(\\s|\\(|\\[|\\{))(let|const|def|defn|fn|if|when|for|while|break|continue|struct|enum|class|macro|throw|try|catch|ns|set!|cond|return|yield|import)(?=(\\s|\\)|\\]|\\}))"
+          "match": "(?<=(\\s|\\(|\\[|\\{))(let|const|def|defn|fn|if|when|for|while|break|continue|struct|enum|class|macro|throw|try|catch|ns|set!|cond|return|yield|import|switch|do)(?=(\\s|\\)|\\]|\\}))"
         },
         {
           "name": "keyword.other.lisp",

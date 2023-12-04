@@ -32,13 +32,19 @@ inf              ; positive infinity
 :symbol          ; symbol
 
 ;; Keywords
+(ns)
+(import)
 (let)
 (const)
 (def)
 (defn)
 (fn)
+(set!)
+(return)
+(yield)
 (if)
 (when)
+(cond)
 (for)
 (while)
 (break)
@@ -46,17 +52,11 @@ inf              ; positive infinity
 (struct)
 (enum)
 (class)
+(this)
 (macro)
 (throw)
 (try)
 (catch)
-(ns)
-(set!)
-(cond)
-(return)
-(yield)
-(import)
-(this)
 
 
 ;; Builtin Functions / Special Forms / Macros
@@ -177,6 +177,8 @@ inf              ; positive infinity
 (find #"[0-9]+" "abc12de")    ; find regex (=> "12")
 (match #"([0-9]+)" "ab1c34d") ; match regex (=> ["ab1c34d", "1", "34"])
 (in? "a" "12aabc32")          ; is string in string?
+(upper "abc")                 ; upper-case
+(lower "DEF")                 ; lower-case
 
 ;; vector
 ;; TODO: see lodash.js
