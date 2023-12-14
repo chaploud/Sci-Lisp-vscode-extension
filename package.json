@@ -2,7 +2,13 @@
   "name": "sci-lisp",
   "displayName": "Sci-Lisp",
   "description": "Sci-Lisp language support",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "chaploud",
+  "icon": "images/scilisp.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chaploud/Sci-Lisp-vscode-extension"
+  },
   "engines": {
     "vscode": "^1.84.0"
   },

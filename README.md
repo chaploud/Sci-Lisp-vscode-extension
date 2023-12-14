@@ -18,3 +18,7 @@
 ### 0.0.1
 
 Initial release of Sci-Lisp.
+
+### 0.0.2
+
+Add icon.
