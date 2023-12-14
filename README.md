@@ -9,6 +9,8 @@
 
 - Syntax Highlight
 
+![Syntax Highlight](https://raw.githubusercontent.com/chaploud/Sci-Lisp-vscode-extension/main/images/SyntaxHighlight.gif)
+
 ## Requirements
 
 ## Extension Settings
@@ -22,3 +24,7 @@ Initial release of Sci-Lisp.
 ### 0.0.2
 
 Add icon.
+
+### 0.0.3
+
+Add syntax highlight GIF.
