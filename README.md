@@ -4,6 +4,9 @@
 
 [Sci-Lisp](https://github.com/chaploud/sci-lisp) language support.
 
+## Marketplace
+
+[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=chaploud.sci-lisp)
 
 ## Features
 
