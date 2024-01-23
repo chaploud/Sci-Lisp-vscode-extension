@@ -2,7 +2,7 @@
   "name": "sci-lisp",
   "displayName": "Sci-Lisp",
   "description": "Sci-Lisp language support",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "publisher": "chaploud",
   "icon": "images/scilisp.png",
   "repository": {
@@ -16,16 +16,25 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "lisp",
-      "aliases": ["Sci-Lisp", "lisp"],
-      "extensions": [".lisp"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "lisp",
-      "scopeName": "source.lisp",
-      "path": "./syntaxes/lisp.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "slisp",
+        "aliases": [
+          "Sci-Lisp",
+          "lisp"
+        ],
+        "extensions": [
+          ".slisp"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "slisp",
+        "scopeName": "source.slisp",
+        "path": "./syntaxes/slisp.tmLanguage.json"
+      }
+    ]
   }
 }
