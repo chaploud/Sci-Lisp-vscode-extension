@@ -46,6 +46,9 @@
     },
     {
       "include": "#symbol"
+    },
+    {
+      "include": "#type-annotation"
     }
   ],
   "repository": {
@@ -206,6 +209,10 @@
           ]
         }
       ]
+    },
+    "type-annotation": {
+      "name": "entity.name.tag.slisp",
+      "match": "(#\\!?[$%&-=\\^+*<>?_/\\w]+)"
     },
     "quoted-sexp": {
       "name": "meta.quoted-expression.slisp",
