@@ -241,7 +241,7 @@
       ]
     },
     "regexp": {
-      "name": "string.regexp.slisp",
+      "name": "string.variable.slisp",
       "begin": "#\"",
       "beginCaptures": {
         "0": {
