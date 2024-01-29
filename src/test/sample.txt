@@ -51,3 +51,381 @@ complex
 -1+1j
 -1.0-1.0j
 1e1-1.0e1J
+
+    {
+      "include": "#quoted-sexp"
+    },
+    {
+      "include": "#sexp"
+    },
+    {
+      "include": "#keyfn"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#vector"
+    },
+    {
+      "include": "#set"
+    },
+    {
+      "include": "#map"
+    },
+    {
+      "include": "#regexp"
+    },
+    {
+      "include": "#var"
+    },
+    {
+      "include": "#dynamic-variables"
+    },
+    {
+      "include": "#metadata"
+    },
+    {
+      "include": "#namespace-symbol"
+    },
+    {
+      "include": "#symbol"
+    },
+    {
+      "include": "#type-annotation"
+    }
+
+    "keyword": {
+      "name": "constant.keyword.slisp",
+      "match": "(?<=(\\s|\\(|\\[|\\{)):[\\w\\#\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+(?=(\\s|\\)|\\]|\\}|\\,))"
+    },
+    "keyfn": {
+      "patterns": [
+        {
+          "name": "keyword.control.slisp",
+          "match": "(?<=(\\s|\\(|\\[|\\{))(let|const|def|defn|fn|if|when|for|while|break|continue|struct|enum|class|macro|throw|try|catch|ns|set!|cond|return|yield|import|switch|do)(?=(\\s|\\)|\\]|\\}))"
+        },
+        {
+          "name": "keyword.other.slisp",
+          "match": "^#@(?=\\()|(?<=(\\s|\\(|\\[|\\{))(\\.\\s|__\\p{Ll}+__|(as)?->>?|as(sert)?|async|await|def(class|n(/a)?|main|macro(/g\\!|\\!)?|tag)|del|doto|eval-(and|when)-compile|gensym|in|import|pys?|quasiquote|quote|require|unquote(-splice)?|with(-decorator|-gensyms|/a)?|yield-from)(?=(\\s|\\)|\\]|\\}))"
+        },
+        {
+          "name": "storage.modifier.slisp",
+          "match": "(?<=(\\s|\\(|\\[|\\{))(global|nonlocal)(?=(\\s|\\)|\\]|\\}))"
+        }
+      ]
+    },
+    "dynamic-variables": {
+      "name": "meta.symbol.dynamic.slisp",
+      "match": "\\*[\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\d]+\\*"
+    },
+    "map": {
+      "name": "meta.map.slisp",
+      "begin": "(\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.section.map.begin.slisp"
+        }
+      },
+      "end": "(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.map.end.trailing.slisp"
+        },
+        "2": {
+          "name": "punctuation.section.map.end.slisp"
+        }
+      },
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "metadata": {
+      "patterns": [
+        {
+          "name": "meta.metadata.map.slisp",
+          "begin": "(\\^\\{)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.section.metadata.map.begin.slisp"
+            }
+          },
+          "end": "(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.section.metadata.map.end.trailing.slisp"
+            },
+            "2": {
+              "name": "punctuation.section.metadata.map.end.slisp"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "name": "meta.metadata.simple.slisp",
+          "begin": "(\\^)",
+          "end": "(\\s)",
+          "patterns": [
+            {
+              "include": "#keyword"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
+    "type-annotation": {
+      "name": "entity.name.tag.slisp",
+      "match": "(#\\!?[$%&-=\\^+*<>?_/\\w]+)"
+    },
+    "quoted-sexp": {
+      "name": "meta.quoted-expression.slisp",
+      "begin": "(['`]\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.section.expression.begin.slisp"
+        }
+      },
+      "end": "(\\))$|(\\)(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\))",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.expression.end.trailing.slisp"
+        },
+        "2": {
+          "name": "punctuation.section.expression.end.trailing.slisp"
+        },
+        "3": {
+          "name": "punctuation.section.expression.end.slisp"
+        }
+      },
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "regexp": {
+      "name": "string.variable.slisp",
+      "begin": "#\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.regexp.begin.slisp"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.regexp.end.slisp"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#regexp_escaped_char"
+        }
+      ]
+    },
+    "regexp_escaped_char": {
+      "name": "constant.character.escape.slisp",
+      "match": "\\\\."
+    },
+    "set": {
+      "name": "meta.set.slisp",
+      "begin": "(\\#\\{)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.section.set.begin.slisp"
+        }
+      },
+      "end": "(\\}(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\})",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.set.end.trailing.slisp"
+        },
+        "2": {
+          "name": "punctuation.section.set.end.slisp"
+        }
+      },
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "sexp": {
+      "name": "meta.expression.slisp",
+      "begin": "(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.section.expression.begin.slisp"
+        }
+      },
+      "end": "(\\))$|(\\)(?=[\\}\\]\\)\\s]*(?:;|$)))|(\\))",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.expression.end.trailing.slisp"
+        },
+        "2": {
+          "name": "punctuation.section.expression.end.trailing.slisp"
+        },
+        "3": {
+          "name": "punctuation.section.expression.end.slisp"
+        }
+      },
+      "patterns": [
+        {
+          "name": "meta.definition.global.slisp",
+          "begin": "(?<=\\()(set[vx]|def[\\w\\d._:+=><!?*-]*|[\\w._:+=><!?*-][\\w\\d._:+=><!?*-]*/def[\\w\\d._:+=><!?*-]*)\\s+",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.control.slisp"
+            }
+          },
+          "end": "(?=\\))",
+          "patterns": [
+            {
+              "include": "#metadata"
+            },
+            {
+              "include": "#dynamic-variables"
+            },
+            {
+              "name": "entity.global.slisp",
+              "match": "([\\p{L}\\.\\-\\_\\+\\=\\>\\<\\!\\?\\*][\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\*\\d]*)"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "include": "#keyfn"
+        },
+        {
+          "include": "#constants"
+        },
+        {
+          "include": "#vector"
+        },
+        {
+          "include": "#map"
+        },
+        {
+          "include": "#set"
+        },
+        {
+          "include": "#sexp"
+        },
+        {
+          "match": "(?<=\\()(.+?)(?=\\s|\\))",
+          "captures": {
+            "1": {
+              "name": "entity.name.function.slisp"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.slisp",
+          "begin": "(?<!\\\\)(\")",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.begin.slisp"
+            }
+          },
+          "end": "(\")",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.slisp"
+            }
+          },
+          "patterns": [
+            {
+              "match": "\\\\.",
+              "name": "constant.character.escape.slisp"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.bracket-string.slisp",
+          "begin": "(?<!\\\\)(\\#\\[\\[)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.begin.slisp"
+            }
+          },
+          "end": "(\\]\\])",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.string.end.slisp"
+            }
+          }
+        }
+      ]
+    },
+    "namespace-symbol": {
+      "patterns": [
+        {
+          "match": "([\\p{L}\\.\\-\\_\\+\\=\\>\\<\\!\\?\\*][\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\*\\d]*)/",
+          "captures": {
+            "1": {
+              "name": "meta.symbol.namespace.slisp"
+            }
+          }
+        }
+      ]
+    },
+    "symbol": {
+      "patterns": [
+        {
+          "name": "meta.symbol.slisp",
+          "match": "([\\p{L}\\.\\-\\_\\+\\=\\>\\<\\!\\?\\*][\\w\\.\\-\\_\\:\\+\\=\\>\\<\\!\\?\\*\\d]*)"
+        }
+      ]
+    },
+    "var": {
+      "name": "meta.var.slisp",
+      "match": "(?<=(\\s|\\(|\\[|\\{)\\#)'[\\w\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+(?=(\\s|\\)|\\]|\\}))"
+    },
+    "vector": {
+      "name": "meta.vector.slisp",
+      "begin": "(\\[)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.section.vector.begin.slisp"
+        }
+      },
+      "end": "(\\](?=[\\}\\]\\)\\s]*(?:;|$)))|(\\])",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.vector.end.trailing.slisp"
+        },
+        "2": {
+          "name": "punctuation.section.vector.end.slisp"
+        }
+      },
+      "patterns": [
+        {
+          "include": "$self"
+        }
+      ]
+    }
+  }
