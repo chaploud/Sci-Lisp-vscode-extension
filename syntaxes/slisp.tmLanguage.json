@@ -6,6 +6,9 @@
       "include": "#comment"
     },
     {
+      "include": "#constants"
+    },
+    {
       "include": "#quoted-sexp"
     },
     {
@@ -31,9 +34,6 @@
     },
     {
       "include": "#var"
-    },
-    {
-      "include": "#constants"
     },
     {
       "include": "#dynamic-variables"
@@ -74,43 +74,36 @@
           "match": "(true|false)"
         },
         {
-          "name": "constant.hexadecimal.slisp",
-          "match": "(-?0[xX][0-9a-fA-F]+)"
+          "name": "constant.binary.slisp",
+          "match": "-?0[bB][01]+(_*[01]+)*"
         },
         {
           "name": "constant.octal.slisp",
-          "match": "(-?0[oO][0-7]+)"
+          "match": "-?0[oO][0-7]+(_*[0-7]+)*"
         },
         {
-          "name": "constant.binary.slisp",
-          "match": "(-?0[bB][01]+)"
+          "name": "constant.hexadecimal.slisp",
+          "match": "-?0[xX][0-9a-zA-Z]+(_*[0-9a-zA-Z]+)*"
         },
         {
-          "name": "constant.complex.slisp",
-          "match": "(([-+]?(?:\\d+\\.\\d*|\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?[-+])?(?<![-+])[-+]?(?:\\d+\\.\\d*|(?<!\\d+)\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?[jJ])"
+          "name": "constant.integer.slisp",
+          "match": "-?(\\d+(_*\\d+)*)"
         },
         {
           "name": "constant.float.slisp",
-          "match": "([-+]?(?<!\\d)(?:\\d+\\.\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?)"
+          "match": "-?(\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)"
         },
         {
-          "name": "constant.int.slisp",
-          "match": "(-?\\d(\\d|_)*)"
+          "name": "constant.complex.slisp",
+          "match": "-?(\\d+(_*\\d+)*|\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)[-+](\\d+(_*\\d+)*|\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)[jJ]"
         },
         {
           "name": "constant.infinite.slisp",
-          "match": "(-?inf)(?=(\\s|\\)|\\]|\\}))"
+          "match": "-?inf"
         },
         {
           "name": "constant.nan.slisp",
-          "match": "(nan)(?=(\\s|\\)|\\]|\\}))"
-        },
-        {
-          "name": "constant.other.symbol.slisp",
-          "match": "(:[^,\\[\\]\\(\\)\\{\\}\\s\\d-]+|self)"
-        },
-        {
-          "include": "#keyword"
+          "match": "nan"
         }
       ]
     },
