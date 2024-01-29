@@ -25,7 +25,6 @@
 (let [{0 a, 1 b} {0 1, 1 2}] (print a b)) ;; 1 2
 ;; 問題はマップ
 (let [{:a x, :b y, :default {x 2}} {:a 10 :b 20}] (print x y)) ;; 10 20
-
 (defn nation-datetime
   "Create a datetime object"
   [nation #str ;; 位置引数(シンボルの直後の#xxxは型アノテーションとしてみなされる)
@@ -36,13 +35,10 @@
       :default {:year 1970, :mon 1, :day 1, :hour 0,
                 :min 0, :sec 0, :nano 0, :tz "UTC+00:00"}}]
   => #datetime ;; 返り値の型アノテーション
-
   ;; デフォルト値を指定したものは、型推論ができる(あんまり意味はないか)
   ;; Mapはキーとペアのセットだが、型情報はシンタックス的に許容する
   ;; 型アノテーションは指定しなくてもいい(型推論できないものは、Any型になる)
-
   ;; シンボルにどちらも指定されていた場合は後勝ち
-
   ;; index accessは要素がないときnilを返す
   (let [year (or (0 rest) year)
         mon (or (1 rest) mon)
@@ -103,3 +99,21 @@
 
 (print p.x p.y)  ;; このスタイルを許可する
 (print (.x p) (.y p)) ;; こういうこともできる
+
+;comment
+; TODO:
+; FIXME:
+; XXX:
+; BUG:
+; HACK:
+; NOTE:
+(nil, nil)
+[nil, nil]
+{nil, nil}
+(false, true)
+(-0x9f, 0x9f)
+(-0o07, 0O66)
+(-0b01, 0B11)
+(-1+1j, 1+1j, 1e1+1ej, 1e-1j, 1e+1j, 1e1j, 1e-1j, 1e+1j)
+(1.2, .2_2, 2., 2.2, 2.2e1, 2.2e-1, -2.2e+1, 1e2)
+(1_2)

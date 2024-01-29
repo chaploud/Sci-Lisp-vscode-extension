@@ -54,64 +54,55 @@
   "repository": {
     "comment": {
       "name": "comment.line.semicolon.slisp",
-      "begin": "(?<!\\\\);(;{1,3})?",
-      "beginCaptures": {
-        "0": {
-          "name": "punctuation.definition.comment.slisp"
-        }
-      },
+      "begin": ";",
       "end": "$",
       "patterns": [
         {
           "name": "keyword.codetag.slisp",
-          "match": "(?<=;)\\s+\\K(TODO|FIXME|XXX|BUG|HACK|NOTE):"
+          "match": "(?<=;)\\s*(TODO|FIXME|XXX|BUG|HACK|NOTE):*"
         }
       ]
     },
     "constants": {
       "patterns": [
         {
-          "name": "constant.language.null.slisp",
-          "match": "(nil)(?=(\\s|\\)|\\]|\\}))"
+          "name": "constant.nil.slisp",
+          "match": "nil"
         },
         {
-          "name": "constant.language.boolean.slisp",
-          "match": "(true|false)(?=(,|\\s|\\)|\\]|\\}))"
+          "name": "constant.boolean.slisp",
+          "match": "(true|false)"
         },
         {
-          "name": "constant.numeric.fraction.slisp",
-          "match": "(-?\\d+/\\d+)"
-        },
-        {
-          "name": "constant.numeric.hexadecimal.slisp",
+          "name": "constant.hexadecimal.slisp",
           "match": "(-?0[xX][0-9a-fA-F]+)"
         },
         {
-          "name": "constant.numeric.octal.slisp",
+          "name": "constant.octal.slisp",
           "match": "(-?0[oO][0-7]+)"
         },
         {
-          "name": "constant.numeric.binary.slisp",
+          "name": "constant.binary.slisp",
           "match": "(-?0[bB][01]+)"
         },
         {
-          "name": "constant.numeric.complex.slisp",
+          "name": "constant.complex.slisp",
           "match": "(([-+]?(?:\\d+\\.\\d*|\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?[-+])?(?<![-+])[-+]?(?:\\d+\\.\\d*|(?<!\\d+)\\.\\d+|\\d+)(?:[eE][-+]?\\d+)?[jJ])"
         },
         {
-          "name": "constant.numeric.float.slisp",
+          "name": "constant.float.slisp",
           "match": "([-+]?(?<!\\d)(?:\\d+\\.\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?)"
         },
         {
-          "name": "constant.numeric.int.slisp",
-          "match": "(-?\\d+)"
+          "name": "constant.int.slisp",
+          "match": "(-?\\d(\\d|_)*)"
         },
         {
-          "name": "constant.numeric.infinite.slisp",
+          "name": "constant.infinite.slisp",
           "match": "(-?inf)(?=(\\s|\\)|\\]|\\}))"
         },
         {
-          "name": "constant.numeric.nan.slisp",
+          "name": "constant.nan.slisp",
           "match": "(nan)(?=(\\s|\\)|\\]|\\}))"
         },
         {
