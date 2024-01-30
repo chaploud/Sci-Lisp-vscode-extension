@@ -2,7 +2,7 @@
   "name": "sci-lisp",
   "displayName": "Sci-Lisp",
   "description": "Sci-Lisp language support",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "publisher": "chaploud",
   "icon": "images/scilisp.png",
   "repository": {
