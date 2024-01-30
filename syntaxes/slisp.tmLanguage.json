@@ -147,7 +147,7 @@
       "patterns": [
         {
           "name": "keyword.control.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))(def|const|let|set!|defn|fn|return|if|when|do|cond|switch|for|while|break|continue|struct|enum|method|macro|try|catch|finally|typedef)(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))(def|const|let|set!|defn|fn|return|if|when|do|cond|switch|for|while|break|continue|struct|enum|method|macro|try|catch|finally|throw|typedef)(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "variable.language.slisp",
