@@ -15,16 +15,13 @@
       "include": "#keyword-symbol"
     },
     {
-      "include": "#quoted-symbol"
+      "include": "#type-annotation"
     },
     {
-      "include": "#syntax-quote"
+      "include": "#mark"
     },
     {
       "include": "#keyword"
-    },
-    {
-      "include": "#type-annotation"
     },
     {
       "include": "#special-variable"
@@ -49,43 +46,43 @@
       "patterns": [
         {
           "name": "constant.numeric.binary.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))-?0[bB][01]+(_*[01]+)*(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))-?0[bB][01]+(_*[01]+)*(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.numeric.octal.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))-?0[oO][0-7]+(_*[0-7]+)*(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))-?0[oO][0-7]+(_*[0-7]+)*(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.numeric.hexadecimal.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))-?0[xX][0-9a-zA-Z]+(_*[0-9a-zA-Z]+)*(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))-?0[xX][0-9a-zA-Z]+(_*[0-9a-zA-Z]+)*(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.numeric.complex.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))-?((\\d+(_*\\d+)*|\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)[-+])?(\\d+(_*\\d+)*|\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)[jJ](?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))-?((\\d+(_*\\d+)*|\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)[-+])?(\\d+(_*\\d+)*|\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)[jJ](?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.numeric.float.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))-?(\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))-?(\\d+(_*\\d+)*\\.|(\\d+(_*\\d+)*\\.\\d+(_*\\d+)*|\\d+(_*\\d+)*)(e[-+]?\\d+(_*\\d+)*)?)(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.numeric.integer.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|\\|))-?(\\d+(_*\\d+)*)(?=(\\s|\\)|\\]|\\}|\\,|\\|))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|\\||'))-?(\\d+(_*\\d+)*)(?=(\\s|\\)|\\]|\\}|\\,|\\|))"
         },
         {
           "name": "constant.numeric.infinite.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))-?inf(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))-?inf(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.numeric.nan.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))nan(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))nan(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.language.nil.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))nil(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))nil(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "constant.language.boolean.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))(true|false)(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|'))(true|false)(?=(\\s|\\)|\\]|\\}|\\,))"
         }
       ]
     },
@@ -119,27 +116,35 @@
       "patterns": [
         {
           "name": "constant.language.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,)):[a-zA-Z!$%&\\-=^+*<>?_/][a-zA-Z0-9!$%&\\-=^+*<>?_/]*(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,|')):[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*(?=(\\s|\\)|\\]|\\}|\\,))"
         }
       ]
     },
-    "quoted-symbol": {
+    "mark": {
       "patterns": [
         {
-          "name": "markup.quote.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))'[a-zA-Z!$%&\\-=^+*<>?_/][a-zA-Z0-9!$%&\\-=^+*<>?_/]*(?=(\\s|\\)|\\]|\\}|\\,))"
-        }
-      ]
-    },
-    "syntax-quote": {
-      "patterns": [
-        {
-          "name": "entity.name.tag.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))[a-zA-Z!$%&\\-=^+*<>?_/][a-zA-Z0-9!$%&\\-=^+*<>?_/]*#(?=(\\s|\\)|\\]|\\}|\\,))"
+          "name": "markup.quote.quoted.slisp",
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))'+(?!\\b(false|true|nil|nan|inf|:)\\b)(-(?!\\binf\\b)[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/#]*|[a-zA-Z!$%=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/#]*)(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
-          "name": "variable.parameter.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))~@?[a-zA-Z!$%&\\-=^+*<>?_/][a-zA-Z0-9!$%&\\-=^+*<>?_/]*(?=(\\s|\\)|\\]|\\}|\\,))"
+          "name": "markup.quote.quote.slisp",
+          "match": "'"
+        },
+        {
+          "name": "entity.name.tag.autogen.slisp",
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*#(?=(\\s|\\)|\\]|\\}|\\,))"
+        },
+        {
+          "name": "markup.quote.sharp.slisp",
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))#(?=(\\s|\\)|\\]|\\}|\\,|\\{))"
+        },
+        {
+          "name": "markup.quote.and.slisp",
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))&(?=(\\s|\\,))"
+        },
+        {
+          "name": "variable.parameter.unquote.slisp",
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))~@?[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*(?=(\\s|\\)|\\]|\\}|\\,))"
         }
       ]
     },
@@ -147,7 +152,7 @@
       "patterns": [
         {
           "name": "keyword.control.slisp",
-          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))(def|const|let|set!|defn|fn|return|if|when|do|cond|switch|for|while|break|continue|struct|enum|method|macro|try|catch|finally|throw|import)(?=(\\s|\\)|\\]|\\}|\\,))"
+          "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))(def|const|let|set!|defn|fn|return|if|when|do|cond|switch|for|while|break|continue|struct|enum|method|macro|try|catch|finally|throw|import|export)(?=(\\s|\\)|\\]|\\}|\\,))"
         },
         {
           "name": "variable.language.slisp",
@@ -165,11 +170,11 @@
     },
     "type-annotation": {
       "name": "storage.type.slisp",
-      "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))#[a-zA-Z!$%&\\-=^+*<>?_/][a-zA-Z0-9!$%&\\-=^+*<>?_/]*(?=(\\[|\\s|\\)|\\]|\\}|\\,))"
+      "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))#[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*(?=(\\[|\\s|\\)|\\]|\\}|\\,))"
     },
     "special-variable": {
       "name": "variable.parameter.slisp",
-      "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))\\*[a-zA-Z0-9!$%&\\-=^+*<>?_/]+\\*?(?=(\\s|\\)|\\]|\\}|\\,))"
+      "match": "(?<=(^|\\s|\\(|\\[|\\{|\\,))\\*[a-zA-Z0-9!$%\\-=^+*<>?_/]+\\*?(?=(\\s|\\)|\\]|\\}|\\,))"
     },
     "sexp": {
       "begin": "\\(",
@@ -188,10 +193,7 @@
           "include": "#keyword-symbol"
         },
         {
-          "include": "#quoted-symbol"
-        },
-        {
-          "include": "#syntax-quote"
+          "include": "#mark"
         },
         {
           "include": "#keyword"
@@ -209,13 +211,54 @@
           "include": "#sexp"
         },
         {
-          "match": "(?<=(set!|const|def|defn|enum|struct|macro)(\\,|\\s)+)([a-zA-Z!$%&\\-=^+*<>?_/][a-zA-Z0-9!$%&\\-=^+*<>?_/]*)(?=(\\s|\\)|\\]|\\}|\\,))",
+          "match": "(?<=(set!|const|def|defn|enum|struct|macro)(\\,|\\s)+)([a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*)(?=(\\s|\\)|\\]|\\}|\\,))",
           "captures": {
             "3": {
               "name": "variable.parameter.slisp"
             }
           },
           "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "match": "(?<=import(\\s|\\,)+)([a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*)",
+          "captures": {
+            "2": {
+              "name": "variable.parameter.slisp"
+            }
+          },
+          "patterns": [
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "name": "punctuation.import.slisp",
+          "begin": "(?<=import.+:as(\\s|\\,)+)",
+          "end": "(?=(\\s|\\,|\\)|\\]|\\}|\\[|\\(|\\{))",
+          "patterns": [
+            {
+              "name": "variable.parameter.slisp",
+              "match": "[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "name": "punctuation.method.slisp",
+          "begin": "(?<=method(\\s|\\,)+\\[)",
+          "end": "(?=\\])",
+          "patterns": [
+            {
+              "name": "variable.parameter.slisp",
+              "match": "[a-zA-Z!$%\\-=^+*<>?_/][a-zA-Z0-9!$%\\-=^+*<>?_/]*"
+            },
             {
               "include": "$self"
             }
