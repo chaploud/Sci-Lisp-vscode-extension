@@ -14,6 +14,10 @@
 
 ![Syntax Highlight](https://raw.githubusercontent.com/chaploud/Sci-Lisp-vscode-extension/main/images/SyntaxHighlight.png)
 
+## Target file extension
+
+- automatically detect `*.sl` or `*.slisp`
+
 ## Requirements
 
 ## Extension Settings

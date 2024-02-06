@@ -24,6 +24,7 @@
           "lisp"
         ],
         "extensions": [
+          ".sl",
           ".slisp"
         ],
         "configuration": "./language-configuration.json"
