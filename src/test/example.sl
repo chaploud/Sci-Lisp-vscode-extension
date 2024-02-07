@@ -7,7 +7,6 @@ false               ; false
 true                ; true
 nil                 ; nil
 -999                ; i64
-999
 0b101               ; i64 (binary)
 0o777               ; i64 (octal)
 0xff                ; i64 (hex)
@@ -30,7 +29,8 @@ inf                 ; f64: positive infinity
 ;; if, when, cond, switch,
 ;; while, for, break, continue
 ;; try, catch, finally, throw,
-;; import
+;; import, export
+;; typedef
 
 ;; ===== Spceial Marks (cannot use in symbol name)
 ;; : => keyword
@@ -332,7 +332,6 @@ i                            ; => 4 you can access i after loop.
 (struct Enemy                       ; define struct
   "Enemy Struct"                    ; docstring
   [hp]
-  :method
   (defn heal [self x]               ; define method inside of struct
     (set! self.hp (+ self.hp x))))
 
@@ -346,6 +345,27 @@ i                            ; => 4 you can access i after loop.
 (.hp slime)                         ; access member => 20
 (slime.damage 10)                   ; call method (allow this style)
 (print slime.hp)                    ; => 10 (allow this style)
+
+(struct ChildEnemy => Enemy         ; inherit struct
+  "ChildEnemy Struct"
+  [mp]
+
+  (defn ChildEnemy [self hp mp]     ; you can define constructor(Same as struct name)
+    (set! self.hp hp)
+    (set! self.mp mp)))
+
+  (defn magic [self x]
+    (set! self.mp (- self.mp x)))
+
+(def slime-child
+  (ChildEnemy {:hp 20, :mp 10}))    ; using struct
+
+(slime-child.magic 5)               ; call method
+(slime-child.damage 5)              ; call parent method
+
+(ancestor slime-child)              ; => [Enemy] show all ancestor
+(ancestor ChildEnemy)               ; => [Enemy]
+(ancestor #ChildEnemy)              ; => [#Enemy]
 
 ;; ===== macro
 (macro my-and                     ; define macro
@@ -435,12 +455,16 @@ i                            ; => 4 you can access i after loop.
 #s[#f64]                 ; set of f64
 #a[#i64, [2, 3, 4]]      ; 3d-array of i64 (shape is [2, 3, 4])
 #fn[#i64, #i64] => #i64  ; function like (fn [x y] => (+ x y)), x: i64, y: i64, return: i64
-#macro                   ; macro
-#generator               ; generator
+#macro                   ; macro(マクロの型をどうするか)
+#generator[#str]         ; generator
 #datetime                ; datetime
 #duration                ; duration
-#iterable                ; iterable
+#iterable[#i64]          ; iterable
 #collection              ; collection
+#option[#i64]            ; option of i64
+
+;; map_key: #str, #i64, #key
+;; array: #i64, #f64, #c64 + shape
 
 ;; ===== User Defined Type
 (enum Color                         ; define enum
@@ -455,6 +479,10 @@ i                            ; => 4 you can access i after loop.
    y #i64])
 
 (def p #Point (Point {:x 1, :y 2})) ; using struct type: Point
+
+(typedef #int #i64)                 ; typedef (type alias)
+(typedef #map-key
+  (union #i64 #str #key))           ; union of i64, string, keyword
 
 ;; ===== Type hierarchy
 ;; #any is super type of all types
@@ -486,6 +514,7 @@ i                            ; => 4 you can access i after loop.
 
 (import string :as str)               ; import with alias
 (str/shouty-snake "abcDef")           ; => "ABC_DEF"
+(def sss str/#template "{:.2}")       ; use type defiend in module
 
 (import string [shouty-snake          ; import with select
                 train-case])
@@ -494,14 +523,10 @@ i                            ; => 4 you can access i after loop.
 (import "path/to/somename")           ; import 'somename.lisp'
 (somename/somefunc 1 2 3)             ; => ...
 
-(defn somefunc1 [x y z]
+(defn somefunc [x y z]
   (print x y z))
 
-(defn somefunc2 [x y z]
-  (print x y z))
-
-(export [somefunc1                    ; export function
-         somefunc2])
+(export [somefunc])                   ; export function
 
 ;; ===== Array API
 (def a (array [[1, 2, 3],             ; 2d-array of i64
@@ -521,9 +546,11 @@ i                            ; => 4 you can access i after loop.
 
 ;; ===== Scientific Constants
 
-
 ;; 他のモジュールで定義された型の利用
+;; 強力な型推論
 
+;; test
+;; assert
 ;; Polars binding
 ;; Parallel(thread, coroutine, async)
 ;; SIMD
